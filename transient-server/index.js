@@ -103,6 +103,7 @@ app.get('/',(req, res)=> {
   // res.send('all good bro');
 });
 app.post('/', (req, res) => {
+  console.log(`Got a Request to save a file: ${req.files.responseFile.name}`);
   var filePath = '';
   if(req.query.location === 'CA') {
     filePath = config.locations[2].canada.inComing;
@@ -113,13 +114,13 @@ app.post('/', (req, res) => {
   }else if(req.query.location === 'FT') {
     filePath = config.locations[3].forTest.inComing;
   }
-  filePath = path.join(filePath, req.files.upFile.name);
-  var ws = fs.createWriteStream(filePath);
-  req.files.upFile.pipe(ws)
-                  .on('error', (e)=> console.error(e))
-                  .on('close', () => console.log(`file was saved to ${filePath}`));
-  // console.log(req.files.upFile);
-  res.end();
+  filePath = path.join(filePath, req.files.responseFile.name);
+  fs.writeFile(filePath, req.files.responseFile.data, (err)=> {
+    if(err){
+      console.error(`There was an issue with the file with an error code of: ${err}`)
+    }
+    res.send('File Send successful');
+  });
 });
 
 

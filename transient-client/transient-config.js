@@ -6,7 +6,7 @@ module.exports = {
     transmission: 'send'
   },
   poll:{
-    folder: './recieve',
+    folder: './receive',
     transUrl: 'http://localhost:3000',
     transmission: 'receive'
   }
