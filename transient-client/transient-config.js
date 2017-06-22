@@ -1,13 +1,13 @@
 module.exports = {
-  location: 'FT',
+  location: 'KC',
   watch:{
-    folder: './watch/',
-    transUrl: 'http://localhost:3000',
+    folder: 'C:\\I-mail\\KCDistOut\\',
+    transUrl: 'http://transient.aa.org:3000',
     transmission: 'send'
   },
   poll:{
-    folder: './receive',
-    transUrl: 'http://localhost:3000',
+    folder: 'C:\\I-mail\\InDir\\',
+    transUrl: 'http://transient.aa.org:3000',
     transmission: 'receive'
   }
 }

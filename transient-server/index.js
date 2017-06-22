@@ -7,16 +7,19 @@ const UL = require('express-fileupload');
 var config = require('./transient-config');
 const path = require('path');
 const fs = require('fs');
+const morgan = require('morgan')
 
 //Initialize the Express Session
 var app = express();
 
 //Get the defined port to listen for requests.
-var port = process.env.PORT || 5000;
+var port = process.env.PORT || 3000;
 
 
 
 //Middleware
+var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {flags: 'a'});
+app.use(morgan('combined',{stream: accessLogStream}));
 app.use(UL());
 app.use(bp.json());
 app.use(bp.urlencoded());

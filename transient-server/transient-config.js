@@ -10,7 +10,7 @@ var config = {
           }
       },
       {
-          kansassCity: {
+          kansasCity: {
             outGoing: '\\\\aawsdp03\\shared\\Order Fulfillment\\General\\Today\'s Kansas City Orders\\',
             inComing: '\\\\aawsdp03\\shared\\Order Fulfillment\\General\\inmail\\KC\\'
           }
