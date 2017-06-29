@@ -28,6 +28,12 @@ var config = {
         }
       }
     ],
+    shares: [
+      {
+        name: 'CPC',
+        location: '\\\\aawsdp03\\shared\\hp driver',
+      }
+    ],
     port: 3000,
   }
 module.exports = config;

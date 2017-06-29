@@ -1,0 +1,3 @@
+::1 - - [29/Jun/2017:17:12:57 +0000] "GET /cpc HTTP/1.1" 404 142 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
+::1 - - [29/Jun/2017:17:12:57 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://localhost:3000/cpc" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
+::1 - - [29/Jun/2017:17:13:03 +0000] "GET /CPC HTTP/1.1" 404 142 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
