@@ -1,16 +1,17 @@
 //Imports Only
 
 const express = require('express');
+const path = require('path');
 const bp = require('body-parser');
 const cp = require('cookie-parser');
 const UL = require('express-fileupload');
-var config = require('./transient-config');
-const path = require('path');
 const fs = require('fs');
+const si = require('serve-index');
 const morgan = require('morgan')
 
 //Initialize the Express Session
 var app = express();
+var configPath = path.join(__dirname, 'transient-config');
 
 //Get the defined port to listen for requests.
 var port = process.env.PORT || 3000;
@@ -18,14 +19,19 @@ var port = process.env.PORT || 3000;
 
 
 //Middleware
+
 var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {flags: 'a'});
 app.use(morgan('combined',{stream: accessLogStream}));
 app.use(UL());
 app.use(bp.json());
 app.use(bp.urlencoded());
 app.use(cp());
+app.set('views', 'views');
+app.set('view engine', 'pug');
 
-
+//static file shares
+app.use('/shares', si(path.join(__dirname, 'shares'), {'icons': true}));
+app.use('/shares', express.static(path.join(__dirname, 'shares')));
 //routes
 
 app.get('/',(req, res)=> {

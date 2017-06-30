@@ -28,6 +28,18 @@ var config = {
         }
       }
     ],
+    shares: [
+      {
+        name: 'CPC',
+        location: 'C:\\Users\\rutherfordc.AA\\Documents\\commas web\\COMMaS\\',
+        files: [],
+      },
+      {
+        name: 'BS',
+        location: 'somewhere out there....',
+        files: [],
+      }
+    ],
     port: 3000,
   }
 module.exports = config;
