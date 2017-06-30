@@ -1,0 +1,25 @@
+<service>
+	<id>transientserver11.exe</id>
+	<name>Transient Server 1.1</name>
+	<description>The Simple File transfer utility in Node.</description>
+	<executable>C:\Program Files\nodejs\node.exe</executable>
+	<logmode>rotate</logmode>
+	<argument>--harmony</argument>
+	<argument>C:\Program Files\Transient\transientComplete\transient-server\node_modules\node-windows\lib\wrapper.js</argument>
+	<argument>--file</argument>
+	<argument>C:\Program Files\Transient\transientComplete\transient-server\index.js</argument>
+	<argument>--log</argument>
+	<argument>Transient Server 1.1 wrapper</argument>
+	<argument>--grow</argument>
+	<argument>0.25</argument>
+	<argument>--wait</argument>
+	<argument>1</argument>
+	<argument>--maxrestarts</argument>
+	<argument>3</argument>
+	<argument>--abortonerror</argument>
+	<argument>n</argument>
+	<argument>--stopparentfirst</argument>
+	<argument>undefined</argument>
+	<stoptimeout>30sec</stoptimeout>
+	<workingdirectory>C:\Program Files\Transient\transientComplete\transient-server</workingdirectory>
+</service>
