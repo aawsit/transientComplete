@@ -29,3 +29,6 @@
 ::1 - - [30/Jun/2017:16:49:24 +0000] "GET /shares/ HTTP/1.1" 200 8293 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
 ::1 - - [30/Jun/2017:16:49:26 +0000] "GET /shares/CTB_STMT.pdf HTTP/1.1" 200 116019 "http://localhost:3000/shares/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
 ::1 - - [30/Jun/2017:16:50:17 +0000] "GET /shares/CTB_STMT.pdf HTTP/1.1" 304 - "http://localhost:3000/shares/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
+::1 - - [05/Jul/2017:18:14:27 +0000] "GET /?location=NY&transmission=receive HTTP/1.1" 500 1744 "-" "PostmanRuntime/6.1.6"
+::1 - - [05/Jul/2017:18:15:54 +0000] "GET /?location=NY&transmission=receive HTTP/1.1" 404 297 "-" "PostmanRuntime/6.1.6"
+::1 - - [05/Jul/2017:18:16:33 +0000] "GET /?location=NY&transmission=receive HTTP/1.1" 200 2056 "-" "PostmanRuntime/6.1.6"

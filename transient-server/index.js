@@ -8,6 +8,7 @@ const UL = require('express-fileupload');
 const fs = require('fs');
 const si = require('serve-index');
 const morgan = require('morgan')
+var config = require('./transient-config.js');
 
 //Initialize the Express Session
 var app = express();
