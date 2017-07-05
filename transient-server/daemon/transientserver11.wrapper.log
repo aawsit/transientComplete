@@ -1,0 +1,16 @@
+2017-06-23 08:45:24 - Starting C:\Program Files\nodejs\node.exe  --harmony "C:\Program Files\Transient\transientComplete\transient-server\node_modules\node-windows\lib\wrapper.js" --file "C:\Program Files\Transient\transientComplete\transient-server\index.js" --log "Transient Server 1.1 wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2017-06-23 08:45:24 - Started 3656
+2017-06-23 10:47:25 - Stopping transientserver11.exe
+2017-06-23 10:47:25 - ProcessKill 3656
+2017-06-23 10:47:25 - Found child process: 3968 Name: conhost.exe
+2017-06-23 10:47:25 - Found child process: 2380 Name: node.exe
+2017-06-23 10:47:25 - Stopping process 3968
+2017-06-23 10:47:25 - Send SIGINT 3968
+2017-06-23 10:47:25 - SIGINT to 3968 failed - Killing as fallback
+2017-06-23 10:47:25 - Stopping process 2380
+2017-06-23 10:47:25 - Send SIGINT 2380
+2017-06-23 10:47:25 - SIGINT to 2380 failed - Killing as fallback
+2017-06-23 10:47:25 - Stopping process 3656
+2017-06-23 10:47:25 - Send SIGINT 3656
+2017-06-23 10:47:25 - SIGINT to 3656 failed - Killing as fallback
+2017-06-23 10:47:25 - Finished transientserver11.exe

@@ -32,7 +32,12 @@ app.set('view engine', 'pug');
 
 //static file shares
 app.use('/shares', si(path.join(__dirname, 'shares'), {'icons': true}));
-app.use('/shares', express.static(path.join(__dirname, 'shares')));
+app.use('/shares',
+(req, res, next) =>{
+  console.log(req.originalUrl);
+  next();
+},
+express.static(path.join(__dirname, 'shares')));
 //routes
 
 app.get('/',(req, res)=> {

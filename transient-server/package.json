@@ -13,7 +13,8 @@
     "cookie-parser": "^1.4.3",
     "express": "^4.15.3",
     "express-fileupload": "^0.1.3",
-    "morgan": "^1.8.2"
+    "morgan": "^1.8.2",
+    "serve-index": "^1.9.0"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
@@ -21,7 +22,10 @@
     "gulp-nodemon": "^2.2.1",
     "jshint": "^2.9.4"
   },
-  "pkg":{
-    "assets": ["transient-config.js","access.log"]
+  "pkg": {
+    "assets": [
+      "transient-config.js",
+      "access.log"
+    ]
   }
 }

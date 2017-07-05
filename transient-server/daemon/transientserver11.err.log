@@ -1,0 +1,23 @@
+Fri, 23 Jun 2017 12:45:25 GMT body-parser deprecated undefined extended: provide extended option at index.js:25:12
+Error: ENOENT: no such file or directory, stat '\\aawsdp03\shared\Order Fulfillment\General\Today's Kansas City Orders\06231701.exp'
+    at Error (native)
+Error: EPERM: operation not permitted, stat '\\aawsdp03\shared\Order Fulfillment\General\Today's Kansas City Orders\06231701.exp'
+    at Error (native)
+Error: EPERM: operation not permitted, stat '\\aawsdp03\shared\Order Fulfillment\General\Today's Kansas City Orders\06231701.exp'
+    at Error (native)
+Error: EPERM: operation not permitted, stat '\\aawsdp03\shared\Order Fulfillment\General\Today's Kansas City Orders\06231701.exp'
+    at Error (native)
+Error: EPERM: operation not permitted, stat '\\aawsdp03\shared\Order Fulfillment\General\Todays Extreme Solution Orders\06231708.exp'
+    at Error (native)
+Error: EPERM: operation not permitted, stat '\\aawsdp03\shared\Order Fulfillment\General\Todays Extreme Solution Orders\06231708.exp'
+    at Error (native)
+Error: EPERM: operation not permitted, stat '\\aawsdp03\shared\Order Fulfillment\General\Today's Kansas City Orders\06231701.exp'
+    at Error (native)
+Error: EPERM: operation not permitted, stat '\\aawsdp03\shared\Order Fulfillment\General\Today's Kansas City Orders\06231701.exp'
+    at Error (native)
+Error: EPERM: operation not permitted, stat '\\aawsdp03\shared\Order Fulfillment\General\Today's Kansas City Orders\06231701.exp'
+    at Error (native)
+Error: EPERM: operation not permitted, stat '\\aawsdp03\shared\Order Fulfillment\General\Today's Kansas City Orders\06231701.exp'
+    at Error (native)
+Error: EPERM: operation not permitted, stat '\\aawsdp03\shared\Order Fulfillment\General\Todays New York Files\06231705.exp'
+    at Error (native)
