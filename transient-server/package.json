@@ -20,5 +20,8 @@
     "gulp-jshint": "^2.0.4",
     "gulp-nodemon": "^2.2.1",
     "jshint": "^2.9.4"
+  },
+  "pkg":{
+    "assets": ["transient-config.js","access.log"]
   }
 }

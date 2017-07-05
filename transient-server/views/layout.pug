@@ -1,0 +1,21 @@
+doctype html
+html
+  head
+    script(src='https://code.jquery.com/jquery-3.2.1.min.js')
+    link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u", crossorigin="anonymous")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js", integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa", crossorigin="anonymous")
+    link(href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", rel="stylesheet", integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN", crossorigin="anonymous")
+    link(href='/public/css/main.css', rel='stylesheet')
+  body
+    nav.navbar.navbar-default
+      .container-fluid
+        .navbar-header
+          button.navbar-toggle.collapsed(data-toggle='collapse', type='button', data-target='#trans-nav')
+            span.sr-only Toggle Navigation
+            span.fa.fa-bars
+          a.navbar-brand(href='#') Transient, The Simple File Transfer Utility.
+        .collapse.navbar-collapse#trans-nav
+          ul.nav.navbar-nav
+            li.active: a(href='#') File Downloads.
+    block content
+            
