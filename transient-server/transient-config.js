@@ -3,29 +3,25 @@ var config = {
     appDescription: 'The simple, easy corporate file transfer tool',
     mongoUrl: 'mongodb://localhost:27017/transient',
     locations:[
+        {
+          location: 'NY',
+          outGoing: '\\\\aawsdp03\\shared\\Order Fulfillment\\General\\Todays New York Files\\',
+          inComing: '\\\\aawsdp03\\shared\\Order Fulfillment\\General\\inmail\\NY\\',
+        },
+        {
+          location: 'KC',
+          outGoing: '\\\\aawsdp03\\shared\\Order Fulfillment\\General\\Today\'s Kansas City Orders\\',
+          inComing: '\\\\aawsdp03\\shared\\Order Fulfillment\\General\\inmail\\KC\\',
+        },
+        {
+          location: 'CA',
+          outGoing: '\\\\aawsdp03\\shared\\Order Fulfillment\\General\\Todays Extreme Solution Orders\\',
+          inComing: '\\\\aawsdp03\\shared\\Order Fulfillment\\General\\inmail\\ES\\',
+        },
       {
-          newYork: {
-            outGoing: '\\\\aawsdp03\\shared\\Order Fulfillment\\General\\Todays New York Files\\',
-            inComing: '\\\\aawsdp03\\shared\\Order Fulfillment\\General\\inmail\\NY\\'
-          }
-      },
-      {
-          kansasCity: {
-            outGoing: '\\\\aawsdp03\\shared\\Order Fulfillment\\General\\Today\'s Kansas City Orders\\',
-            inComing: '\\\\aawsdp03\\shared\\Order Fulfillment\\General\\inmail\\KC\\'
-          }
-      },
-      {
-          canada: {
-            outGoing: '\\\\aawsdp03\\shared\\Order Fulfillment\\General\\Todays Extreme Solution Orders\\',
-            inComing: '\\\\aawsdp03\\shared\\Order Fulfillment\\General\\inmail\\ES\\'
-          }
-      },
-      {
-        forTest: {
-          outGoing: 'forTest\\out\\',
-          inComing: 'forTest\\in\\'
-        }
+        location:'ft',
+        outGoing: 'forTest\\out\\',
+        inComing: 'forTest\\in\\',
       }
     ],
     shares: [

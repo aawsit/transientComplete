@@ -6,6 +6,7 @@ const bp = require('body-parser');
 const cp = require('cookie-parser');
 const UL = require('express-fileupload');
 const fs = require('fs');
+const ck = require('chokidar');
 const si = require('serve-index');
 const morgan = require('morgan')
 var config = require('./transient-config.js');
@@ -13,10 +14,21 @@ var config = require('./transient-config.js');
 //Initialize the Express Session
 var app = express();
 var configPath = path.join(__dirname, 'transient-config');
+var watcher = [];
 
 //Get the defined port to listen for requests.
 var port = process.env.PORT || 3000;
-
+for(let location of config.locations){
+  watcher.push(ck.watch(location.outGoing, {
+    ignored: /(^|[\/\\])\../,
+    persistent: true
+  }));
+  for(let watch of watcher){
+    watch.on('add', path => {
+      console.log(`File has been detected in ${path}`);
+    });
+  }
+}
 
 
 //Middleware
@@ -40,6 +52,11 @@ app.get('/',(req, res)=> {
   var trans = req.query.transmission;
   // var file = '';
   var fPath = '';
+  for(let location of config.locations){
+    if(location === loc){
+
+    }
+  }
   console.log(`${req.query.location} \n${req.query.transmission}`);
   if((loc === 'CA') &&(trans === 'receive')){
       // console.log('got Canada');
