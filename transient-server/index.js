@@ -19,13 +19,24 @@ var watcher = [];
 //Get the defined port to listen for requests.
 var port = process.env.PORT || 3000;
 for(let location of config.locations){
-  watcher.push(ck.watch(location.outGoing, {
-    ignored: /(^|[\/\\])\../,
-    persistent: true
-  }));
-  for(let watch of watcher){
-    watch.on('add', path => {
+  watcher.push({
+    watcherName: location.location,
+    watcher:   ck.watch(location.outGoing, {
+      ignored: /(^|[\/\\])\../,persistent: true}),
+    lastPickup: Date.now(),
+    files: [],
+  });
+
+  for(let watchThis of watcher){
+    console.log(watchThis);
+    watchThis.watcher.on('add', path => {
       console.log(`File has been detected in ${path}`);
+      watchThis.files.push({
+        filePath: path,
+        addedDate: Date.now(),
+        pickedUp: false,
+      });
+      console.log(watchThis.files);
     });
   }
 }
@@ -50,68 +61,85 @@ app.use('/shares', express.static(path.join(__dirname, 'shares')));
 app.get('/',(req, res)=> {
   var loc = req.query.location;
   var trans = req.query.transmission;
-  // var file = '';
-  var fPath = '';
-  for(let location of config.locations){
-    if(location === loc){
 
+  for(let watch in watcher){
+    if(watch.watcherName === loc){
+      if(watch.files.length > 0){
+        var filePath = watch.files[0].filePath;
+        var filearr = filePath.split('\\');
+        var fileName = filearr[-1];
+        res.sendFile(filePath, fileName);
+      }else{
+        res.send('Sorry there are no files to pick up....');
+      }
     }
   }
-  console.log(`${req.query.location} \n${req.query.transmission}`);
-  if((loc === 'CA') &&(trans === 'receive')){
-      // console.log('got Canada');
-      fPath = config.locations[2].canada.outGoing;
-      // console.log(file);
-  }else if((loc==='CA')&&(trans === 'send')){
-      fPath = config.locations[2].canada.inComing;
-  }else if((loc==='NY')&&(trans === 'receive')){
-    fPath = config.locations[0].newYork.outGoing;
-  }else if((loc === 'NY')&&(trans === 'send')){
-    fPath = config.locations[0].newYork.inComing;
-  }else if((loc === 'KC')&&(trans === 'receive')){
-    fPath = config.locations[1].kansasCity.outGoing;
-  }else if((loc === 'KC')&&(trans === 'send')){
-    fPath = config.locations[1].kansasCity.inComing;
- }else if((loc === 'FT')&&(trans === 'receive')){
-    fPath = config.locations[3].forTest.outGoing;
-}else if((loc === 'FT')&&(trans === 'send')){
-  fPath = config.locations[3].forTest.inComing;
-}
-  var filename = '';
-  var today = new Date();
-  var mm = today.getMonth()+1;
-  var dd = today.getDate();
-  var yy = today.getYear();
-  console.log(`${mm}-${dd}-${yy}`);
-  if(mm<10){
-    mm = '0' + mm;
-  }
-  if(dd<10){
-    dd = '0' + dd;
-  }
-  if(yy>100){
-    yy -= 100;
-  }
-  console.log(`${mm}${dd}${yy}`);
-  if(loc === 'CA'){
-    filename = mm + dd + yy + '08.exp';
-  }else if(loc==='KC'){
-    filename = mm + dd + yy + '01.exp';
-  }else if(loc === 'NY'){
-    filename = mm + dd + yy + '05.exp';
-  }else if(loc === 'FT'){
-    filename = mm + dd + yy + '02.exp';
-  }
-  console.log(fPath);
-  console.log(filename);
-  var thisPath = path.join(fPath, filename);
-  if(trans === 'receive'){
-    res.setHeader('content-type', 'application/text');
-    res.download(thisPath, `${filename}`);
 
- }else{
-  res.end(`${req.query.location} \n${req.query.transmission}\nWas not found.`);
- }
+
+
+
+  // var file = '';
+//   var fPath = '';
+//   for(let location of config.locations){
+//     if(location === loc){
+//
+//     }
+//   }
+//   console.log(`${req.query.location} \n${req.query.transmission}`);
+//   if((loc === 'CA') &&(trans === 'receive')){
+//       // console.log('got Canada');
+//       fPath = config.locations[2].canada.outGoing;
+//       // console.log(file);
+//   }else if((loc==='CA')&&(trans === 'send')){
+//       fPath = config.locations[2].canada.inComing;
+//   }else if((loc==='NY')&&(trans === 'receive')){
+//     fPath = config.locations[0].newYork.outGoing;
+//   }else if((loc === 'NY')&&(trans === 'send')){
+//     fPath = config.locations[0].newYork.inComing;
+//   }else if((loc === 'KC')&&(trans === 'receive')){
+//     fPath = config.locations[1].kansasCity.outGoing;
+//   }else if((loc === 'KC')&&(trans === 'send')){
+//     fPath = config.locations[1].kansasCity.inComing;
+//  }else if((loc === 'FT')&&(trans === 'receive')){
+//     fPath = config.locations[3].forTest.outGoing;
+// }else if((loc === 'FT')&&(trans === 'send')){
+//   fPath = config.locations[3].forTest.inComing;
+// }
+//   var filename = '';
+//   var today = new Date();
+//   var mm = today.getMonth()+1;
+//   var dd = today.getDate();
+//   var yy = today.getYear();
+//   console.log(`${mm}-${dd}-${yy}`);
+//   if(mm<10){
+//     mm = '0' + mm;
+//   }
+//   if(dd<10){
+//     dd = '0' + dd;
+//   }
+//   if(yy>100){
+//     yy -= 100;
+//   }
+//   console.log(`${mm}${dd}${yy}`);
+//   if(loc === 'CA'){
+//     filename = mm + dd + yy + '08.exp';
+//   }else if(loc==='KC'){
+//     filename = mm + dd + yy + '01.exp';
+//   }else if(loc === 'NY'){
+//     filename = mm + dd + yy + '05.exp';
+//   }else if(loc === 'FT'){
+//     filename = mm + dd + yy + '02.exp';
+//   }
+//   console.log(fPath);
+//   console.log(filename);
+//   var thisPath = path.join(fPath, filename);
+//   if(trans === 'receive'){
+//     res.setHeader('content-type', 'application/text');
+//     res.download(thisPath, `${filename}`);
+//
+//  }else{
+//   res.end(`${req.query.location} \n${req.query.transmission}\nWas not found.`);
+//  }
   // console.log(config.locations[0][0]);
   // var loc = req.query.location;
   // var sendinglocation;
