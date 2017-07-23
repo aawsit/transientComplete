@@ -8,37 +8,19 @@ const UL = require('express-fileupload');
 const fs = require('fs');
 const ck = require('chokidar');
 const si = require('serve-index');
-const morgan = require('morgan')
+const morgan = require('morgan');
+var watcher = require('./watcher.js');
 var config = require('./transient-config.js');
 
 //Initialize the Express Session
 var app = express();
 var configPath = path.join(__dirname, 'transient-config');
-var watcher = [];
+var watcherList = [];
 
 //Get the defined port to listen for requests.
 var port = process.env.PORT || 3000;
 for(let location of config.locations){
-  watcher.push({
-    watcherName: location.location,
-    watcher:   ck.watch(location.outGoing, {
-      ignored: /(^|[\/\\])\../,persistent: true}),
-    lastPickup: Date.now(),
-    files: [],
-  });
-
-  for(let watchThis of watcher){
-    console.log(watchThis);
-    watchThis.watcher.on('add', path => {
-      console.log(`File has been detected in ${path}`);
-      watchThis.files.push({
-        filePath: path,
-        addedDate: Date.now(),
-        pickedUp: false,
-      });
-      console.log(watchThis.files);
-    });
-  }
+  watcher.createWatcher(location.outGoing, location.location);
 }
 
 
@@ -62,7 +44,7 @@ app.get('/',(req, res)=> {
   var loc = req.query.location;
   var trans = req.query.transmission;
 
-  for(let watch in watcher){
+  for(let watch in watcherList){
     if(watch.watcherName === loc){
       if(watch.files.length > 0){
         var filePath = watch.files[0].filePath;
@@ -172,7 +154,7 @@ app.post('/', (req, res) => {
   filePath = path.join(filePath, req.files.responseFile.name);
   fs.writeFile(filePath, req.files.responseFile.data, (err)=> {
     if(err){
-      console.error(`There was an issue with the file with an error code of: ${err}`)
+      console.error(`There was an issue with the file with an error code of: ${err}`);
     }
     res.send('File Send successful');
   });

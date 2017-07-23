@@ -20,8 +20,8 @@ var config = {
         },
       {
         location:'ft',
-        outGoing: 'forTest\\out\\',
-        inComing: 'forTest\\in\\',
+        outGoing: '.\\forTest\\out\\',
+        inComing: '.\\forTest\\in\\',
       }
     ],
     shares: [
